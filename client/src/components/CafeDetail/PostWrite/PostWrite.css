@@ -1,0 +1,6 @@
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+    min-height: 50vh;
+    overflow-y: scroll;
+    border: 1px solid black;
+    
+}

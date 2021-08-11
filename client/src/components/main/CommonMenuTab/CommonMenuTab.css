@@ -1,0 +1,44 @@
+.home_user{
+    display: inline-block;
+    position: relative;
+    width: 756px;
+    left: -44px;
+}
+.common_menu_tab{
+    border-bottom: 1px solid #d8d8d8;
+    position: relative;
+    display: inline-block;
+    width: 756px;
+}
+
+.common_menu_tab .tab_list{
+    position: relative;
+    margin-bottom: -1px;
+    display: inline-block;
+}
+
+.tab_list li{
+    float: left;
+    margin-right: 20px;
+}
+
+.tab_list li .link{
+    position: relative;
+    padding: 8px 2px 5px;
+    font-size: 24px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
+    text-decoration: none;
+    color: black;
+    padding: 0;
+}
+
+.common_menu_tab li.on .link {
+    border-color: #03c75a;
+    color: #03c75a;
+}
+
+.user_mycafe_list{
+    position: relative;
+    display: inline-block;
+    width: 756px;
+}

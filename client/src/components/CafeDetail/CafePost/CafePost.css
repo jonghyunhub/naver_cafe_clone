@@ -1,0 +1,46 @@
+
+.cafepost{
+    display: table-row;
+}
+
+.cafepost td{
+    overflow: hidden;
+    padding-left: 8px;
+    height: 28px;
+    padding: 9px 9px;
+    font-size: 15px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.td_article:hover, .td_name:hover{
+    text-decoration: underline;
+}
+
+.td_article a, .td_name a{
+    text-decoration: none;
+    color: black;
+}
+
+.td_article{
+    display: inline-block;
+    width: 520px;
+    text-align: left;
+}
+
+.td_name{
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+}
+
+.td_date{
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+.td_view{
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+}

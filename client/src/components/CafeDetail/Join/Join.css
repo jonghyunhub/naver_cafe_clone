@@ -1,0 +1,71 @@
+.join{
+    position: relative;
+    clear: both;
+    width: 100%;
+    margin-bottom: 200px;
+}
+
+.h-35 {
+    clear: both;
+    height: 35px;
+    margin: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.join h4{
+    float: left;
+}
+
+.bg-color{
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+.cafe-explanation{
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.nickname_area{
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.nickname_area span{
+    margin-right: 10px;
+}
+
+.nickname_area .login-btn{
+    position: relative;
+    margin-left: 10px;
+    top: 7px;
+}
+
+.question-area{
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.question{
+    margin-bottom: 50px;
+}
+
+.question .q{
+    display: block;
+}
+
+.question textarea{
+    margin-top: 10px;
+    margin-left: 30px;
+    display: inline-block;
+    width: 500px;
+    height: 50px;
+}

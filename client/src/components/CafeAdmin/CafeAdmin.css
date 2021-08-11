@@ -1,0 +1,80 @@
+dl, ol, ul {
+    list-style: none;
+}
+
+.admin_menu{
+    display: inline-block;
+    position: relative;
+    width: 729px;
+}
+
+.edit_area{
+    display: inline-block;
+    position: relative;
+    z-index: 40;
+    width: 263px;
+    height: 729px;
+    overflow-y: scroll;
+    border-right: 1px solid #b1b1b1;
+    border-left: 1px solid #b1b1b1;
+    padding: 6px 0 0;
+    border-top: 1px solid #b1b1b1;
+    border-bottom: 1px solid #b1b1b1;
+}
+
+.edit_title{
+    border-bottom: 1px solid #b1b1b1;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+
+.set_area{
+    float: right;
+    position: relative;
+    width: 466px;
+    height: 729px;
+    border: 1px solid #b1b1b1;
+    color: #666;
+}
+
+#createboard{
+    font-weight: bold;
+}
+
+.boardlist li a{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.boardlist :hover{
+    text-decoration: underline;
+}
+
+.Boardon{
+    background-color: #b1b1b1;
+}
+
+.set_area{
+    width: 426px;
+    padding: 40px 0 35px;
+}
+
+.set_area table tr{
+    display: table-row;
+    margin-bottom: 20px;
+}
+
+
+td input{
+    width: 289px;
+    height: 29px;
+    margin: -6px 0 6px;
+    padding-left: 4px;
+    border: 1px solid #c5c5c5;
+    color: #404040;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 29px;
+}

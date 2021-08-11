@@ -1,0 +1,56 @@
+.cafe-list{
+    position: relative;
+    padding: 24px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cafe-list .mycafe_info{
+    overflow: hidden;
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+
+.mycafe_info .name_area{
+    position: relative;
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.name_area strong{
+    font-weight: bold;
+}
+
+.mycafe_recent{
+    position: relative;
+    margin-bottom: -4px;
+    padding: 2px 0 0 68px;
+    font-size: 14px;
+    word-wrap: normal;
+}
+
+.recent_list{
+    font-size: 14px;
+    line-height: 1.25em;
+}
+
+.recent_list .recent_info{
+    float: right;
+    margin-left: 40px;
+    font-size: 13px;
+    color: #666;
+}
+
+.recent_list .time{
+    margin-left: 5px;
+}
+
+.recent_list .recent_title a{
+    text-decoration: none;
+    color : black
+}
+
+.recent_list .recent_title a:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,397 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.relative{
+    position: relative;
+}
+
+.blind{
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+.center-align{
+    margin: 0 auto;
+    width: 1080px;
+}
+
+body{
+    font-family: 'Apple SD Gothic Neo', '맑은 고딕', 'Malgun Gothic', 돋움, dotum, sans-serif;
+    font-size: 12px;
+}
+
+li, ol, dl{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.align_center{
+    height: 100%;
+    width: 1080px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* app 컴포넌트에서 text-align : center 상속돼서 왼쪽에 넣을려면 필요함 */
+    text-align: start; 
+}
+
+.sub_area{
+    height: 55px;
+    border-bottom: 1px solid #00ac15;
+    background-color: #03c75a;
+}
+
+.sub_inner{
+    position: relative;
+    top: -5px;
+    height: 100%;
+    width: 1080px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* app 컴포넌트에서 text-align : center 상속돼서 왼쪽에 넣을려면 필요함 */
+    text-align: start; 
+    
+}
+
+.sub_inner h1{
+    display: inline-block;
+    position: relative;
+    left: 0;
+    top: 19px;
+}
+
+.sub_inner a{
+    text-decoration: none;
+}
+
+
+.logo_naver{
+    display: inline-block;
+    background: url('/Users/chujonghyun/naver_cafe_clone/client/src/static/images/sp_one_naver_171114.png') no-repeat 0 -5px;
+	width: 55px;
+	height: 12px;
+    position: relative;
+    vertical-align: center;
+    top: -6px;
+    left: -4px;
+}
+
+.logo_naver span{
+    display: none;
+}
+
+.logo_cafe{
+    display: inline-block;
+    background: url('/Users/chujonghyun/naver_cafe_clone/client/src/static/images/sp_one_naver_171114.png') no-repeat -59px 0;
+	width: 41px;
+	height: 24px;
+}
+
+.logo_cafe span{
+    display: none;
+}
+
+.sub_inner form{
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+form fieldset{
+    height: 39px; 
+    margin-left: 18px;
+    width: 350px;
+    position: absolute;
+    top: -11px;
+    border: 1px solid #00ac15;
+    background: white;
+}
+
+form fieldset legend{
+    display: none;
+}
+
+.search_box{
+    position: absolute;
+    top: -5px;
+    left: -25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 340px;
+}
+
+.search_menu{
+    position: relative;
+    text-align: left;
+}
+
+.search_menu .main_a{
+    display: block;
+    position: relative;
+    top: 6px;
+    height: 35px;
+    width: 81px;
+    padding-left: 10px;
+    color: #03c75a;
+    font-size: 12px;
+    line-height: 35px;
+    text-decoration: none;
+}
+
+
+.ic_down{
+    display: inline-block;
+    background: url('/Users/chujonghyun/naver_cafe_clone/client/src/static/images/sp_one_naver_171114.png') no-repeat -110px 0;
+	width: 5px;
+	height: 3px;
+    position: absolute;
+    top: 15px;
+    left: 69px;
+}
+
+.ic_up{
+    display: inline-block;
+    background: url('/Users/chujonghyun/naver_cafe_clone/client/src/static/images/sp_one_naver_171114.png') no-repeat -110px -10px;;
+	width: 5px;
+	height: 3px;
+    position: absolute;
+    top: 15px;
+    left: 69px;
+}
+
+.ic_and{
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    right: 0;
+    width: 1px;
+    height: 11px;
+    background-color: #e5e5e5;
+    vertical-align: top;
+}
+
+
+.search_box input{
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    width: 214px;
+    height: 35px;
+    padding-left: 13px;
+    border: 0;
+    font-size: 12px;
+    color: #999;
+    line-height: 37px;
+}
+
+.btn_arrow{
+    float: left;
+    width: 25px;
+    height: 35px;
+    text-align: center;
+    position: absolute;
+    top : 7px;
+    right: 10px;
+}
+
+.ic_down_green{
+    display: inline-block;
+    background: url('/Users/chujonghyun/naver_cafe_clone/client/src/static/images/sp_one_naver_171114.png') no-repeat -120px 0;
+	width: 5px;
+	height: 3px;
+    position: absolute;
+    top : 15px;
+}
+
+.ic_up_green{
+    display: inline-block;
+    background: url('/Users/chujonghyun/naver_cafe_clone/client/src/static/images/sp_one_naver_171114.png') no-repeat -120px -10px;
+	width: 5px;
+	height: 3px;
+    position: absolute;
+    top : 15px;
+}
+
+#btn_search{
+  position: absolute;
+  top: 0px;
+  right: 0px; 
+  width: 37px;
+  height: 37px;
+  margin-left: -1px;
+  border: 1px solid #239e36;
+  border-left-width: 0;
+  border-radius: 0;
+  background-color: #28a93a;
+}
+
+.ico_search{
+    display: inline-block;
+    position: relative;
+    left: 1px;
+    width: 16px;
+    height: 16px;
+    background-position: 0 -28px;
+    vertical-align: top;
+    background: url('/Users/chujonghyun/naver_cafe_clone/client/src/static/images/sp_one_naver_171114.png') no-repeat 0 -28px;
+}
+
+.search_option_layer{
+    position: absolute;
+    top: 31px;
+    left: 1px;
+    width: 80px;
+    padding: 8px 0 7px 0;
+    border: 1px solid #888;
+    border-top: none;
+    background-color: #fff;
+    text-align: left;
+    z-index: 10;
+}
+
+.search_option_layer li a{
+    display: block;
+    padding: 4px 0 3px 10px;
+    color: #333;
+    text-align: left;
+    text-decoration: none;
+}
+
+.search_option_layer li a:hover{
+    background-color: #f8f9fa;
+    color: #03c75a;
+}
+
+.autocomplete{
+    position: absolute;
+    top: 44px;
+    left: 24px;
+    right: 2px;
+    z-index: 11;
+}
+
+.autocomplete_area{
+    border: 1px solid #888d95;
+    border-top: none;
+    background-color: #fff;
+    font-size: 12px;
+    line-height: 1.5em;
+    font-family: 굴림, Gulim, 돋움, Dotum, AppleGothic, Sans-serif;
+    color: #666;
+}
+
+.autocomplete_area .words {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+.autocomplete_area p{
+    padding: 5px 9px 9px 10px;
+    color: #666;
+}
+
+.func{
+    overflow: hidden;
+    clear: both;
+    width: 100%;
+    padding: 6px 0 7px;
+    /* background: url(https://ssl.pstatic.net/sstatic/search/images11/bg_atcmp_line4.gif) repeat-x; */
+    background-color: #f8f9fa;
+    color: #cecece;
+    font: 11px/1.3em 돋움, Dotum;
+    letter-spacing: -1px;
+}
+
+.func span{
+    float: right;
+    padding-right: 10px;
+}
+
+.func span a:nth-child(2){
+    margin-left: 4px;
+}
+
+.btn_login{
+    display: inline-block;
+    position: absolute;
+    top: 23px;
+    right: 0;
+    /* background: black; */
+}
+
+.gnb_bg{
+    width: 53px;
+    height: 23px;
+    font-family: '나눔고딕',NanumGothic,'돋움',Dotum,'Apple SD Gothic Neo',Helvetica,Sans-serif !important;
+    background-color: #fff;
+    opacity: 0.05;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.gnb_bdr{
+    border: 1px solid #000;
+    opacity: 0.12;
+    position: absolute;
+    top: 0px;
+    left: 1px;
+    display: inline-block;
+    width: 53px;
+    height: 23px;
+}
+
+.gnb_text{
+    text-align: center;
+    position: relative;
+    top: -6px;
+    left: -41px;
+    color: #fff;
+}
+
+.userMenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position : absolute; 
+    top: 25px;
+    right : 0;
+    display : inline-block;
+}
+
+.userMenu .userName{
+    position: relative;
+    display: inline-block;
+    font-size: large;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.userMenu .btn_logout{
+    position: relative;
+    display: inline-block;
+}

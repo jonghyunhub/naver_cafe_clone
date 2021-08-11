@@ -1,0 +1,149 @@
+a{
+    text-decoration: none;
+}
+
+#LeftSideMenu{
+    width: 200px;
+    text-align: left;
+    float: left;
+}
+
+.cafe-info{
+    background-color: #fff;
+}
+
+.info-action-tab{
+    display: flex;
+    position: relative;
+    border-top-color: #333;
+    overflow: hidden;
+    padding: 5px 10px;
+    border-top: 2px solid;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tit-bookmark{
+    border: 1px solid #d3d3d3;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.bookmark-link{
+    position: relative;
+    right: 2px;
+    top: -2px;
+}
+
+.btn-bookmark{
+    background-position: -38px -4px;
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    background-image: url(https://ssl.pstatic.net/static/cafe/cafe_pc/sp/sp_icon_white_72ca546e.svg);
+    background-repeat: no-repeat;
+    vertical-align: top
+}
+
+.tit-info-on{
+    display: inline-block;
+    width: 72px;
+    padding-top: 3px;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.menu-on{
+    color : black;
+}
+
+.menu-off{
+    color : #959595;
+}
+
+.menu-off:hover{
+    text-decoration: underline;
+}
+
+.cafeInfoDetail{
+    position: relative;
+}
+
+.cafeInfoDetail .info-data{
+    padding: 12px 10px;
+}
+
+.cafe-icon{
+    display: inline-block;
+}
+
+.cafe-info-brief{
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    margin-left: 5px;
+}
+
+.first-info-ui, .second-info-ui, .third-info-ui{
+    display: flex;
+}
+
+.cafe-position{
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    color: #666;
+}
+
+.cafe-nickname{
+    margin-left: 3px;
+    font-weight: bold;
+    color: black;
+}
+
+.cafe-nickname:hover, .cafe-history:hover, .cafe-setting:hover{
+    text-decoration: underline;
+}
+
+.cafe-history, .cafe-setting{
+    text-decoration: none;
+    color: black;
+}
+
+.second-info-ui{
+    margin-top: 8px;
+}
+
+.third-info-ui{
+    margin-top: 3px;
+}
+
+.ico_setting{
+    display: inline-block;
+    background-image: url(https://ssl.pstatic.net/static/cafe/cafe_pc/sp/sp_icon_white_72ca546e.svg);
+    background-repeat: no-repeat;
+    background-position: -41px -112px;
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+}
+
+.info-data ul{
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 8px;
+}
+
+.cafe-write-btn a{
+    display: block;
+    margin-bottom: 8px;
+    padding: 9px 0 10px;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: #5a5a5a;
+}

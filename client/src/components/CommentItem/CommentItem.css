@@ -1,0 +1,44 @@
+.comment_item{
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.comment_area{
+    text-align: left;
+    position: relative;
+    top: 5px;
+    padding: 12px 23px 10px 0;
+}
+
+.comment-writer-info .profile{
+    float: left;
+}
+
+.comment-profile-area{
+    position: relative;
+    left: 10px;
+}
+
+.comment-profile-box{
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin-bottom: 8px;
+}
+
+.comment-profile-box a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.comment-text-box{
+    margin-bottom: 10px;
+}
+
+.comment-info-box{
+    position: relative;
+    left: 35px;
+    color : #979797;
+}
