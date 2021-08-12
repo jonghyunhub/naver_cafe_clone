@@ -9,6 +9,7 @@ const LeftSideMenu = (props)=>{
 
     
     const [menuSelect,menuSelectFunc] = useState(0);
+    const [cafeInfo, setcafeInfo] = useState({})
     const [cafeTime, setcafeTime] = useState('');
     const [cafeManager, setcafeManager] = useState('');
     const [isUser, setisUser] = useState(false);
@@ -17,7 +18,7 @@ const LeftSideMenu = (props)=>{
     const user = localStorage.userId;
     
     
-    let {CafeId} = useParams();
+    let { CafeId } = useParams();
     
     // console.log('CafeId', CafeId);
     
@@ -40,6 +41,7 @@ const LeftSideMenu = (props)=>{
                         setisManager(response.data.isManager);
                         setisUser(response.data.isUser);
                         localStorage.setItem('cafeId',response.data.cafeInfo._id);
+                        setcafeInfo(response.data.cafeInfo)
                     }else{
                         alert('카페정보를 가져오는데 실패했습니다')
                     }  
@@ -69,7 +71,7 @@ const LeftSideMenu = (props)=>{
                     ? <CafeInfoDetail cafeTime = {cafeTime} manager ={cafeManager} user = {user.userData}  CafeId = {CafeId} isManager = {isManager} isUser = {isUser}/>
                     : null
                 }
-                <BoardMenu/>
+                <BoardMenu cafeInfo = {cafeInfo}/>
             </div>
         </div>
     )

@@ -1,27 +1,33 @@
 import axios from 'axios';
 import React ,{useEffect, useState }from 'react';
 import './BoardMenu.css';
+import {useDispatch} from 'react-redux';
+import {getBoardList} from '_actions/board_action'
 
 function BoardMenu(props) {
 
+    const dispatch = useDispatch();
+
     const [Board, setBoard] = useState([]);
+
+    const cafeInfo = props.cafeInfo
 
     let cafeId = { cafeId : localStorage.getItem('cafeId') } 
 
     useEffect(() => {
         
-        axios.post('/api/board/getBoardList', cafeId)
-            .then(response =>{
-                if(response.data.success){
-                    // console.log('getboardlist', response.data)
-                    setBoard(response.data.boardlist)
-                    console.log('Board',Board);
-                } else {   
-                    alert('게시판 리스트를 가져오는데 실패했습니다.')
+        dispatch(getBoardList(cafeId))
+            .then(response=>{
+                if(response.payload.boardlist){
+                    console.log('boardlist',response.payload.boardlist)
+                    setBoard(response.payload.boardlist)
+
+                }else{
+                    alert('Error');
                 }
             })
-
-    }, [])
+            
+    }, [cafeInfo])
 
     return (
         <div className="Board">

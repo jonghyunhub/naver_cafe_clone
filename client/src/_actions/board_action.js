@@ -5,7 +5,7 @@ import {
 
 export function getBoardList(dataTosubmit){
 
-    const request = axios.get('/api/board/getBoardList')
+    const request = axios.post('/api/board/getBoardList',dataTosubmit)
         .then(response => response.data)
 
     return {
