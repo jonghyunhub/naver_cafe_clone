@@ -13,7 +13,6 @@ const CafeAdmin = (props) => {
     const [Board, setBoard] = useState([{name : '전체게시판'},{name : '인기글'},{name : '패션게시판'}]);
     const [BoardName, setBoardName] = useState('');
     const [BoardExplain, setBoardExplain] = useState('');
-    const [BoardRoute, setBoardRoute] = useState('')
 
     const BoardNameHander = (e)=>{
         setBoardName(e.currentTarget.value);
@@ -23,9 +22,6 @@ const CafeAdmin = (props) => {
         setBoardExplain(e.currentTarget.value);
     }
 
-    const BoardRouteHander = (e)=>{
-        setBoardRoute(e.currentTarget.value);
-    }
 
 
     const onSubmitHandler = ()=>{
@@ -36,7 +32,6 @@ const CafeAdmin = (props) => {
             let boardData = {
                 name : BoardName,
                 explain : BoardExplain,
-                route : BoardRoute,
                 Cafe : localStorage.getItem('cafeId')
             }
             axios.post('/api/board/createBoard',boardData)
@@ -86,12 +81,6 @@ const CafeAdmin = (props) => {
                             <th>게시판 설명</th>
                             <td>
                                 <input type="text" value={BoardExplain} onChange={BoardExpainHandler}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>게시판 주소</th>
-                            <td>
-                                <input type="text" value={BoardRoute} onChange={BoardRouteHander}/>
                             </td>
                         </tr>
                         <tr>

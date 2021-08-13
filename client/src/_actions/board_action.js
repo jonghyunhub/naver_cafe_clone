@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    Get_Board_list
+    Get_Board_list, nowBoard
 } from './types'
 
 export function getBoardList(dataTosubmit){
@@ -11,6 +11,14 @@ export function getBoardList(dataTosubmit){
     return {
         type : Get_Board_list,
         payload : request
+    }
+}
+
+export function nowboard(board){
+
+    return {
+        type : nowBoard,
+        payload : board
     }
 }
 

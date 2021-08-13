@@ -1,32 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Route } from 'react-router';
 import './RightContentBox.css';
 import {CafePost , PostDetail , CafeGateBox , Join, PostWrite, CafeAdmin} from 'components';
+import { useSelector } from 'react-redux';
 
 const RightContentBox = (props)=>{
-    let [postList,postListFunc] = useState([
-        {
-            id : 0,
-            title : "첫번째 글",
-            writer : "종현",
-            date : "2021.06.18",
-            view : 0
-        },
-        {
-            id : 1,
-            title : "두번째 글",
-            writer : "도현",
-            date : "2021.06.19",
-            view : 0
-        },
-        {
-            id : 2,
-            title : "세번째 글",
-            writer : "지호",
-            date : "2021.06.20",
-            view : 0
-        }
-    ]); 
+
+    const BoardData = useSelector(state=> state.board)
+
+    // console.log('BoardData', BoardData);
+
+    const [postList,setpostList] = useState([]); 
+
+    useEffect(() => {
+        
+        setpostList(BoardData.nowBoard)
+        console.log('postList',postList)
+        
+    }, [BoardData])
+
     return(
         <div className="RightContentBox">
             <switch>
@@ -34,17 +26,25 @@ const RightContentBox = (props)=>{
                     <CafeGateBox/>
                     <div className="title-box">
                         <h3>
-                            <a href="#">전체글보기</a>
+                            {
+                                BoardData.nowBoard ?
+                                <a href>{ BoardData.nowBoard.name}</a>
+                                : BoardData.boardlist ?
+                                    <a href>{ BoardData.boardlist.boardlist[0].name}</a>
+                                    : null
+                            }
                         </h3>
                     </div>
                     <tbody>
-                        {
-                            postList.map((a,i)=>{
+                        {/* {
+                            (postList || postList.length !== 0 )?
+                            postList.map((post,index)=>{
                                 return(
-                                    <CafePost data = {a}/>
+                                    <CafePost data = {post} key={index}/>
                                 )
                             })
-                        }
+                            : null
+                        } */}
                     </tbody>
                 </Route>
                 <div className="article-board">
@@ -52,17 +52,19 @@ const RightContentBox = (props)=>{
                         <PostDetail postList = {postList}/>
                         <div className="title-box">
                         <h3>
-                            <a href="#">전체글보기</a>
+                            <a href="">{}</a>
                         </h3>
                     </div>
                     <tbody>
-                        {
-                            postList.map((a,i)=>{
+                        {/* {
+                            (postList  || postList.length !== 0)?
+                            postList.map((post,index)=>{
                                 return(
-                                    <CafePost data = {a}/>
+                                    <CafePost data = {post} key={index}/>
                                 )
                             })
-                        }
+                            : null
+                        } */}
                     </tbody>
                     </Route>
                     <Route exact path="/CafeDetail/:CafeId/Join">

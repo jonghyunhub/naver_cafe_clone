@@ -3,8 +3,12 @@ import './CafeBanner.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import {useDispatch} from 'react-redux';
+import { getCafeInfo } from '_actions/cafe_action';
 
 const CafeBanner = (props)=>{
+
+    const dispatch = useDispatch();
 
     const user = useSelector(state => state.user)
 
@@ -16,13 +20,19 @@ const CafeBanner = (props)=>{
     
     useEffect(() => {
     
-        axios.post('/api/cafe/cafeInfo', { CafeId : CafeId })
-            .then(response =>{
-                // console.log(response.data.cafeInfo);
-                setCafeName(response.data.cafeInfo?.name);
-                setCafeExplain(response.data.cafeInfo?.explain)
-                // console.log(CafeExplain)
+        let dataTosubmit = { CafeId : CafeId , user : localStorage.getItem('userId')}
+
+        dispatch(getCafeInfo(dataTosubmit))
+            .then(response => {
+                if(response.payload.cafeInfo){
+                    // console.log(response.payload.cafeInfo)
+                    setCafeName(response.payload.cafeInfo.name);
+                    setCafeExplain(response.payload.cafeInfo.explain)
+                }else{
+                    alert('Error')
+                }
             })
+
 
     }, [])
 

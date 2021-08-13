@@ -1,19 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router';
 import './LeftSideMenu.css';
-import axios from 'axios';
 import { BoardMenu } from 'components';
+import { useSelector } from 'react-redux';
 
 const LeftSideMenu = (props)=>{
 
-
+    const cafe = useSelector(state => state.cafe)
     
     const [menuSelect,menuSelectFunc] = useState(0);
-    const [cafeInfo, setcafeInfo] = useState({})
-    const [cafeTime, setcafeTime] = useState('');
-    const [cafeManager, setcafeManager] = useState('');
-    const [isUser, setisUser] = useState(false);
-    const [isManager, setisManager] = useState(false);
+
     
     const user = localStorage.userId;
     
@@ -21,36 +17,9 @@ const LeftSideMenu = (props)=>{
     let { CafeId } = useParams();
     
     // console.log('CafeId', CafeId);
+    // console.log('cafe',cafe)
     
-    
-    useEffect(() => {
         
-        if(user === undefined || user === null){
-            console.log('hi')
-            
-        } else {
-            
-            // console.log(user);
-            axios.post('/api/cafe/cafeInfo', { CafeId : CafeId , user : user})
-                .then(response =>{
-    
-                    if(response.data.success){
-                        // console.log('cafeInfo',response.data);
-                        setcafeTime(response.data.cafeInfo.createdAt);
-                        setcafeManager(response.data.cafeInfo.manager);
-                        setisManager(response.data.isManager);
-                        setisUser(response.data.isUser);
-                        localStorage.setItem('cafeId',response.data.cafeInfo._id);
-                        setcafeInfo(response.data.cafeInfo)
-                    }else{
-                        alert('카페정보를 가져오는데 실패했습니다')
-                    }  
-                })
-        }
-
-        }, [])
-        
-   
 
     return(
         <div id="LeftSideMenu">
@@ -67,11 +36,11 @@ const LeftSideMenu = (props)=>{
                     onClick={()=>{ if(menuSelect === 0 ) menuSelectFunc(1) }}>나의활동</li>
                 </ul>
                 {
-                    menuSelect === 0 && cafeManager.name !== ''
-                    ? <CafeInfoDetail cafeTime = {cafeTime} manager ={cafeManager} user = {user.userData}  CafeId = {CafeId} isManager = {isManager} isUser = {isUser}/>
+                    menuSelect === 0 && cafe.cafeInfo !== undefined
+                    ? <CafeInfoDetail  cafe = {cafe} CafeId = {CafeId}/>
                     : null
                 }
-                <BoardMenu cafeInfo = {cafeInfo}/>
+                <BoardMenu/>
             </div>
         </div>
     )
@@ -79,11 +48,24 @@ const LeftSideMenu = (props)=>{
 
 const CafeInfoDetail = (props)=>{
 
+    // console.log('props',props)
 
+    const [cafeTime, setcafeTime] = useState('');
+    const [cafeManager, setcafeManager] = useState('');
+    const [isUser, setisUser] = useState(false);
+    const [isManager, setisManager] = useState(false);
 
-
+    useEffect(() => {
+        
+        setcafeManager(props.cafe.cafeInfo.cafeInfo.manager.name)
+        setisUser(props.cafe.cafeInfo.isUser)
+        setisManager(props.cafe.cafeInfo.isManager)
+        setcafeTime(props.cafe.cafeInfo.cafeInfo.createdAt)
+        
+    }, [props])
 
     return(
+        
         <div className="cafeInfoDetail">
             <div className="info-data">
                 <ul>
@@ -95,13 +77,13 @@ const CafeInfoDetail = (props)=>{
                     <li className="cafe-info-brief">
                         <div className="first-info-ui">
                             <div className="cafe-position">매니저</div>
-                            <a href="#" className="cafe-nickname">{props.manager.name}</a>
+                            <a href="#" className="cafe-nickname">{cafeManager}</a>
                         </div>
                         <div className="second-info-ui">
-                            <a href="#" className="cafe-history">Since {props.cafeTime}</a>
+                            <a href="#" className="cafe-history">Since {cafeTime}</a>
                         </div>
                         {
-                            props.isManager === true ?
+                            isManager === true ?
                             <div className="third-info-ui">
                                 <a href={`/CafeDetail/${props.CafeId}/CafeAdmin`} className="cafe-setting">
                                     <span className="ico_setting"></span>
@@ -113,13 +95,13 @@ const CafeInfoDetail = (props)=>{
                     </li>
                 </ul>
                 {
-                    props.isUser === false && props.isManager === false ?
+                    isUser === false && isManager === false ?
                     <div className="cafe-write-btn">
-                        <a href={ `/CafeDetail/` + `${props.CafeId}` + `/Join`}>카페 가입하기</a>
+                        <a href={ `/CafeDetail/${props.CafeId}/Join`}>카페 가입하기</a>
                     </div>
 
                     :   <div className="cafe-write-btn">
-                            <a href={ `/CafeDetail/` + `${props.CafeId}` + `/PostWrite`}>카페 글쓰기</a>
+                            <a href={ `/CafeDetail/${props.CafeId}/PostWrite`}>카페 글쓰기</a>
                         </div>
 
                 }
