@@ -1,5 +1,5 @@
 import {
-    Get_Board_list,nowBoard
+    Get_Board_list,nowBoard, CreateBoard
 } from '../_actions/types';
 
 export default function(state = {}, action){
@@ -9,6 +9,9 @@ export default function(state = {}, action){
             return {...state, boardlist : action.payload}
         case nowBoard:
             return {...state, nowBoard : action.payload}
+        case CreateBoard:        
+            console.log('action.payload',action.payload)
+            return {...state, CreateBoard : action.payload}
         default:
             return state;
     }

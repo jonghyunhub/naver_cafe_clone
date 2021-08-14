@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    Get_Cafe_info,
+    Get_Cafe_info,Cafe_Delete
 } from './types'
 
 export function getCafeInfo(dataTosubmit){
@@ -12,4 +12,17 @@ export function getCafeInfo(dataTosubmit){
         type : Get_Cafe_info,
         payload : request
     }
+}
+
+export function DeleteCafe(dataTosubmit){
+
+    // console.log('dataToSubmin',dataTosubmit)
+    const request = axios.post('/api/cafe/deleteCafe', dataTosubmit)
+        .then(response => response.data)
+
+    return {
+        type : Cafe_Delete,
+        payload : request
+    }
+
 }

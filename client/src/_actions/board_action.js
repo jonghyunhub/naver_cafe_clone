@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    Get_Board_list, nowBoard
+    Get_Board_list, nowBoard, CreateBoard
 } from './types'
 
 export function getBoardList(dataTosubmit){
@@ -20,5 +20,17 @@ export function nowboard(board){
         type : nowBoard,
         payload : board
     }
+}
+
+export function createBoard(boardData){
+
+    const request = axios.post('/api/board/createBoard',boardData)
+        .then(response => response.data)
+
+    return {
+        type :  CreateBoard,
+        payload : request
+    }
+
 }
 

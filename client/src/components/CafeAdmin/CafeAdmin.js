@@ -1,13 +1,20 @@
-import axios from 'axios';
 import React,{useState} from 'react'
 import './CafeAdmin.css'
 import { withRouter } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-
+import {useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
+import {DeleteCafe} from '_actions/cafe_action'
+import {createBoard, getBoardList} from '_actions/board_action'
 
 const CafeAdmin = (props) => {
 
+    const cafe = useSelector(state => state.cafe)
+    const board = useSelector(state => state.board)
+
     const cafeName = useParams();
+
+    const dispatch = useDispatch();
 
     const [onUi, setonUi] = useState(1);
     const [Board, setBoard] = useState([{name : '전체게시판'},{name : '인기글'},{name : '패션게시판'}]);
@@ -25,6 +32,7 @@ const CafeAdmin = (props) => {
 
 
     const onSubmitHandler = ()=>{
+        //게시판 생성할때 리덕스로 해줘야함 그래야 새로고침안해도 데이터 랜더링됨
         if(BoardName === '' || BoardExplain === ''){
             alert('게시판이름, 게시판설명을 확인해주세요!');
         } else {
@@ -32,17 +40,41 @@ const CafeAdmin = (props) => {
             let boardData = {
                 name : BoardName,
                 explain : BoardExplain,
-                Cafe : localStorage.getItem('cafeId')
+                Cafe : cafe.cafeInfo.cafeInfo._id
             }
-            axios.post('/api/board/createBoard',boardData)
-            .then(response => {
-                if(response.data.success){
-                    props.history.push(`/CafeDetail/${cafeName.CafeId}`)
-                    }else{
+            dispatch(createBoard(boardData))
+                .then(response=>{
+                    if(response.payload.success){
+                        let cafeId = { cafeId : cafe.cafeInfo.cafeInfo._id } 
+            
+                        dispatch(getBoardList(cafeId))
+                            .then(response=>{
+                                if(response.payload.success){
+                                    props.history.push(`/CafeDetail/${cafeName.CafeId}`)
+                                }else{
+                                    alert('Error');
+                                }
+                            })
+                    } else{
                         alert('게시판 생성에 실패했습니다.')
                     }
                 })
         }
+
+    }
+
+    const onDeleteHandler = () => {
+
+        dispatch(DeleteCafe( { cafeId : cafe.cafeInfo.cafeInfo._id } ))
+            .then(response=>{
+                // console.log('response',response)
+                if(response.payload.success){
+                    props.history.push('/')
+                } else {
+                    alert('카페 삭제에 실패했습니다')
+                }
+            })
+
     }
 
     return (
@@ -52,11 +84,11 @@ const CafeAdmin = (props) => {
                 <ul>
                     <li className="boardlist" id="createboard">
                         <a>
-                            <span>게시판 만들기</span>
+                            <span>게시판 만들기 / 카페삭제</span>
                         </a>
                     </li>
                     {
-                        Board.map((board,index)=>{
+                        board.boardlist.boardlist.map((board,index)=>{
                             return(
                                 <BoardList name={board.name} onUi={onUi} index={index} setonUi={setonUi} />
                             )
@@ -84,7 +116,10 @@ const CafeAdmin = (props) => {
                             </td>
                         </tr>
                         <tr>
-                            <button onClick={onSubmitHandler}>저장하기</button>
+                            <button onClick={onSubmitHandler}>게시판 만들기</button>
+                        </tr>
+                        <tr>
+                            <button onClick={onDeleteHandler}>카페 삭제</button>
                         </tr>
                     </tbody>
                 </table>

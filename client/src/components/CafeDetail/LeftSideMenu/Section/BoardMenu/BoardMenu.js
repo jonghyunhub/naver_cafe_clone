@@ -7,12 +7,14 @@ import {useSelector} from 'react-redux';
 function BoardMenu(props) {
 
     const cafe = useSelector(state => state.cafe)
+    const board = useSelector(state => state.board)
 
     const dispatch = useDispatch();
 
     const [Board, setBoard] = useState([]);
 
-    console.log('cafe',cafe)
+    // console.log('cafe',cafe)
+    console.log('boardlist',board)
     
 
     
@@ -25,7 +27,7 @@ function BoardMenu(props) {
                 .then(response=>{
                     if(response.payload.boardlist){
                         // console.log('boardlist',response.payload.boardlist)
-                        setBoard(response.payload.boardlist)
+                        
                     }else{
                         alert('Error');
                     }
@@ -48,8 +50,8 @@ function BoardMenu(props) {
             </div>
             <ul className="boardlist">
             { 
-                (Board !== null)&&
-                Board.map((board,index)=>{
+                (board !== null && board.boardlist !== undefined)&&
+                board.boardlist.boardlist.map((board,index)=>{
                     return(
                         <li onClick={() =>{nowBoardHandler(board)}} >
                             <a href >

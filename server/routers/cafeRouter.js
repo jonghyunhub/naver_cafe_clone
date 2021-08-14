@@ -10,5 +10,6 @@ router.post('/createCafe', cafe.cafeCreate);
 
 router.post('/findManager',cafe.cafeManger);
 
+router.post('/deleteCafe',cafe.DeleteCafe);
 
 module.exports = router;

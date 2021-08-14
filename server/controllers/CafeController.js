@@ -86,9 +86,25 @@ const cafeManger = (req, res) => {
 }
 
 
+const DeleteCafe = (req, res) => {
+
+    // console.log(req.body)
+    Cafe.findOneAndDelete({ _id : req.body.cafeId})
+        .exec((err)=>{
+            if(err) return res.status(400).json({success : false, err})
+            Board.deleteMany({Cafe : req.body.cafeId })
+                .exec((err)=>{
+                    if(err) return res.status(400).json({success : false, err})
+                    return res.status(200).json({success : true})
+                    })
+        })
+    
+}
+
 module.exports = {
     cafeList,
     cafeInfo,
     cafeCreate,
-    cafeManger
+    cafeManger,
+    DeleteCafe
 };
