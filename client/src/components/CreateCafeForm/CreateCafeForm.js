@@ -36,17 +36,21 @@ const CreateCafeForm = (props)=> {
             manager : user.userData._id._id
         }
         
+        // console.log('tmpCafe',tmpCafe);
+
         setnewCafe(tmpCafe);
         
     }
     
     useEffect(() => {
 
-        axios.post('/api/cafe/createCafe', {newCafe : newCafe, user : user.userData})
-            .then(response => {
-                console.log(response)
-                props.history.push("/");
-            })
+        if(newCafe !== null){
+            axios.post('/api/cafe/createCafe', {newCafe : newCafe, user : user.userData})
+                .then(response => {
+                    console.log(response)
+                    props.history.push("/");
+                })
+        }
         
     }, [newCafe])
 

@@ -38,15 +38,15 @@ const cafeInfo = async (req,res)=>{
 
 const cafeCreate = (req,res)=>{
     //클라에서 생성한 카페 정보랑 유저정보를 보내줌
-    // console.log(req.body);
+    console.log(req.body);
     
     //카페정보로는 카페를 생성하고 
     const cafe = new Cafe(req.body.newCafe);
     //카페안에 전체게시판도 생성
     const board = new Board();
-    board.name = `${req.body.newCafe.name}전체게시판`;
+    board.name = `전체게시판`;
     board.Cafe = cafe;
-    board.route = `${req.body.newCafe.name}totalPost`;
+    board.explain = '카페 모든글을 볼수있는 게시판입니다';
     board.save((err)=>{
         if(err) return res.status(400).json({success: false, err, message : '게시판 생성에 실패했습니다.'})
         

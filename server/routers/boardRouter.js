@@ -6,4 +6,8 @@ router.post('/getBoardList',board.getBoardList);
 
 router.post('/createBoard',board.createBoard);
 
+router.post('/deleteBoard', board.deleteBoard);
+
+router.post('/updateBoard', board.updateBoard);
+
 module.exports = router;

@@ -6,7 +6,6 @@ const boardSchema = mongoose.Schema({
         type : String,
         required : true,
         trim : true,
-        unique : true,
         maxlength : 30,
         minlength : 2,
     },

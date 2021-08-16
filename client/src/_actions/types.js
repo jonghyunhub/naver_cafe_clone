@@ -7,3 +7,5 @@ export const nowBoard = 'now_board';
 export const CreateBoard = 'create_board'
 export const Get_Cafe_info = 'get_cafe_info';
 export const Cafe_Delete = 'cafe_delete';
+export const Board_Delete = 'Board_delete';
+export const Update_Board = 'update_board';
