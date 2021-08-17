@@ -8,16 +8,7 @@ const RightContentBox = (props)=>{
 
     const BoardData = useSelector(state=> state.board)
 
-    // console.log('BoardData', BoardData);
-
-    const [postList,setpostList] = useState([]); 
-
-    useEffect(() => {
-        
-        setpostList(BoardData.nowBoard)
-        console.log('postList',postList)
-        
-    }, [BoardData])
+    console.log('BoardData', BoardData);
 
     return(
         <div className="RightContentBox">
@@ -36,35 +27,19 @@ const RightContentBox = (props)=>{
                         </h3>
                     </div>
                     <tbody>
-                        {/* {
-                            (postList || postList.length !== 0 )?
-                            postList.map((post,index)=>{
-                                return(
-                                    <CafePost data = {post} key={index}/>
-                                )
-                            })
-                            : null
-                        } */}
+                        {/* 글 리스트 뿌려줄곳 */}
                     </tbody>
                 </Route>
                 <div className="article-board">
                     <Route path="/CafeDetail/:CafeId/PostDetail/:PostId">
-                        <PostDetail postList = {postList}/>
+                        {/* <PostDetail postList = {postList}/> */}
                         <div className="title-box">
                         <h3>
                             <a href="">{}</a>
                         </h3>
                     </div>
                     <tbody>
-                        {/* {
-                            (postList  || postList.length !== 0)?
-                            postList.map((post,index)=>{
-                                return(
-                                    <CafePost data = {post} key={index}/>
-                                )
-                            })
-                            : null
-                        } */}
+                        {/* 글 리스트 뿌려줄곳 */}
                     </tbody>
                     </Route>
                     <Route exact path="/CafeDetail/:CafeId/Join">

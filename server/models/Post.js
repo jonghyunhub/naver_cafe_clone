@@ -6,25 +6,11 @@ const boardSchema = mongoose.Schema({
         type : String,
         required : true,
         trim : true,
-        unique : true,
-        maxlength : 30,
-        minlength : 2,
-    },
-    route : {
-        type : String,
-        trim : true,
-        required : true,
-        unique : true,
-        maxlength : 20,
-        minlength : 4,
     },
     content : {
         type : String,
         required : true,
         trim : true,
-        unique : true,
-        maxlength : 30,
-        minlength : 2,
     },
     Board : 
         {
@@ -41,4 +27,4 @@ const boardSchema = mongoose.Schema({
 
 const Post = mongoose.model('post', boardSchema);
 
-module.exports = { Board }
+module.exports = { Post }

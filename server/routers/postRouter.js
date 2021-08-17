@@ -1,10 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var post = require('../controllers/postController');
 
-router.get('/write',function(req,res){
-    res.status(200).json({
-        message : "write"
-    })
-});
+
+router.post('/createPost',post.createPost)
 
 module.exports = router;

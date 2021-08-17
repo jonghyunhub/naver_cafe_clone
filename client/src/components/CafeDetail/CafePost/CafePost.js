@@ -5,8 +5,8 @@ import { useParams } from 'react-router';
 
 
 const CafePost = (props)=>{
-    let {CafeId} = useParams();
-    let posturl = `/CafeDetail/` + `${CafeId}` + `/PostDetail/` + `${props.data.id}`;
+    const {CafeId} = useParams();
+    const posturl = `/CafeDetail/` + `${CafeId}` + `/PostDetail/` + `${props.data.id}`;
     return(
         <tr className="cafepost">
             {

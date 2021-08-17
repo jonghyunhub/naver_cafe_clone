@@ -14,7 +14,7 @@ function BoardMenu(props) {
     const [Board, setBoard] = useState([]);
 
     // console.log('cafe',cafe)
-    console.log('boardlist',board)
+    // console.log('boardlist',board)
     
 
     

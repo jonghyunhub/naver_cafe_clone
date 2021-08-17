@@ -4,3 +4,78 @@
     border: 1px solid black;
     
 }
+
+.WritingHeader{
+    position: relative;
+    margin-top: 20px;
+    border-bottom: 1px solid #323232;
+    text-align: left;
+}
+
+.WritingHeader .title {
+    margin-bottom: 16px;
+    font-size: 22px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.WritingHeader .tool_area {
+    position: absolute;
+    bottom: 12px;
+    right: 0;
+}
+
+.WritingHeader .submit_btn{
+    min-width: 46px;
+    height: 36px;
+    margin-left: 10px;
+    padding: 0 12px;
+    font-size: 13px;
+    display: inline-block;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: top;
+    color : #009f47;
+    background: rgba(3, 199, 90, 0.12);
+}
+
+.WritingHeader .submit_btn span{
+    font-size: 13px;
+    line-height: 36px;
+    color : #009F47
+}
+
+form select{
+    height: 40px;
+    font-size: 15px;display: block;
+    position: relative;
+    width: 100%;
+    padding: 0 25px 0 11px;
+    border: 1px solid #ebecef;
+    background: #fff;
+    text-align: left;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.TitleArea textarea{
+    width: 100%;
+    min-height: 40px;
+    padding: 11px 12px 10px;
+    border: 1px solid #ebecef;
+    box-sizing: border-box;
+    overflow: hidden;
+    resize: none;
+    word-break: break-all;
+    font-size: 15px;
+    letter-spacing: -.23px;
+    line-height: 17px;
+    outline: none;
+    height: 40px;
+}
