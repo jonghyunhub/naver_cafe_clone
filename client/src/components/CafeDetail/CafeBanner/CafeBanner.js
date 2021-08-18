@@ -1,7 +1,6 @@
 import React, {useState , useEffect} from 'react';
 import './CafeBanner.css';
 import { useParams } from 'react-router';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import {useDispatch} from 'react-redux';
 import { getCafeInfo } from '_actions/cafe_action';
@@ -124,7 +123,7 @@ const CafeBanner = (props)=>{
                 </div>
             }
 
-            <a href={`http://localhost:3000/CafeDetail/` + `${CafeId}` } className="cafe_default_banner">
+            <a href={`http://localhost:3000/CafeDetail/${CafeId}` } className="cafe_default_banner">
                 <span className="cafe_default">
                     <div className="inner_default">
                         <strong className="cafe_name">{CafeName}</strong>

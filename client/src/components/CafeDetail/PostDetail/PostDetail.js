@@ -1,27 +1,21 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router';
+import React from 'react';
 import './PostDetail.css';
 import {CommentItem} from 'components';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const PostDetail = (props)=>{
 
-    useEffect(()=>{
-        axios.get('/api/user/login').then((response)=>{
-            console.log(response);
-        })
-    },[])
-
-    let {PostId} = useParams();
+   const post = useSelector(state => state.nowBoard)
+    
 
     return(
         <div className="post_detail">
             <div className="article_header">
                 <div className="article_title">
-                    <a href="#" className="link_board">자유게시판</a>
+                    <a href="#" className="link_board">{}</a>
                 </div>
                 <div className="title_area">
-                    <h3>{props.postList[PostId].title}</h3>
+                    {/* <h3>{props.postList[PostId].title}</h3> */}
                 </div>
                 <div className="writer-info">
                     <a href="#" className="profile">
@@ -30,25 +24,25 @@ const PostDetail = (props)=>{
                     <div className="profile-area">
                         <div className="profile-info">
                             <a href="#">
-                                {props.postList[PostId].writer}
+                                {/* {props.postList[PostId].writer} */}
                             </a>
                         </div>
                         <div className="article-info">
-                            <span className="date"> {props.postList[PostId].date} </span>
-                            <span className="count"> 조회 {props.postList[PostId].view} </span>
+                            {/* <span className="date"> {props.postList[PostId].date} </span> */}
+                            {/* <span className="count"> 조회 {props.postList[PostId].view} </span> */}
                         </div>
                     </div>
                 </div>
             </div>
             <div className="article_container">
                 <div className="content_container">
-                    {props.postList[PostId].content}
+                    {/* {props.postList[PostId].content} */}
                 </div>
                 <a href="#" className="writer_profile_link">
                     <div className="article_writer profile">
                     <img src="https://ssl.pstatic.net/static/cafe/cafe_pc/default/cafe_profile_77.png?type=c77_77" width="36" height="36" />
                         <span className="box">
-                            <strong className="user">{props.postList[PostId].writer}</strong>
+                            {/* <strong className="user">{props.postList[PostId].writer}</strong> */}
                             님의 게시글 더보기
                         </span>
                     </div>
@@ -60,7 +54,7 @@ const PostDetail = (props)=>{
                         </a>
                         <a href="#" className="like_data">
                             좋아요 
-                            <span className="like_count">{props.postList[PostId].view}</span>
+                            {/* <span className="like_count">{props.postList[PostId].view}</span> */}
                         </a>
                     </div>
                 </div>
@@ -77,7 +71,7 @@ const PostDetail = (props)=>{
                 <div className="comment_write_box">
                     <div className="comment_inbox">
                         <div className="comment_inbox_name">
-                            {props.postList[PostId].nickName}
+                            {/* {props.postList[PostId].nickName} */}
                         </div>
                         <textarea placeholder="댓글을 남겨보세요" rows="1" className="comment_inbox_text"></textarea>
                     </div>

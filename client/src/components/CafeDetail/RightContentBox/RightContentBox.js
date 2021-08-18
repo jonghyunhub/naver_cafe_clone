@@ -8,7 +8,7 @@ const RightContentBox = (props)=>{
 
     const BoardData = useSelector(state=> state.board)
 
-    console.log('BoardData', BoardData);
+    // console.log('BoardData', BoardData);
 
     return(
         <div className="RightContentBox">
@@ -19,7 +19,7 @@ const RightContentBox = (props)=>{
                         <h3>
                             {
                                 BoardData.nowBoard ?
-                                <a href>{ BoardData.nowBoard.name}</a>
+                                <a href>{ BoardData.nowBoard.board.name}</a>
                                 : BoardData.boardlist ?
                                     <a href>{ BoardData.boardlist.boardlist[0].name}</a>
                                     : null
@@ -27,12 +27,19 @@ const RightContentBox = (props)=>{
                         </h3>
                     </div>
                     <tbody>
-                        {/* 글 리스트 뿌려줄곳 */}
+                    {
+                        BoardData.nowBoard && 
+                            BoardData.nowBoard.board.Posts.map((post,index)=>{
+                                return(
+                                    <CafePost post = {post} key={index}/>
+                                )
+                            })
+                    }
                     </tbody>
                 </Route>
                 <div className="article-board">
                     <Route path="/CafeDetail/:CafeId/PostDetail/:PostId">
-                        {/* <PostDetail postList = {postList}/> */}
+                        <PostDetail/>
                         <div className="title-box">
                         <h3>
                             <a href="">{}</a>

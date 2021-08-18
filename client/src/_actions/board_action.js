@@ -16,9 +16,12 @@ export function getBoardList(dataTosubmit){
 
 export function nowboard(board){
 
+    const request = axios.post('/api/board/getNowBoard', board)
+        .then(response => response.data)
+
     return {
         type : nowBoard,
-        payload : board
+        payload : request
     }
 }
 

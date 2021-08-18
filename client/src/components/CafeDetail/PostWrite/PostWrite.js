@@ -4,9 +4,15 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useSelector } from 'react-redux';
 import {CreatePost} from '_actions/post_action';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
+import { withRouter } from 'react-router';
 
 const PostWrite = (props)=>{
     
+
+    const dispatch = useDispatch();
+    let {CafeId} = useParams();
     const board = useSelector(state => state.board)
     const user = useSelector(state => state.user)
     // console.log(user)
@@ -32,11 +38,18 @@ const PostWrite = (props)=>{
             content : postContents,
             userId : user.userData._id._id
         }
+        console.log(postData)
         if(boardId ==='' || postTitle === '' || postContents === null){
             alert('글제목, 글내용, 게시판 설정을 다시한번 확인하세요')
         } else {
-            console.log(postData)
-            CreatePost(postData)
+            dispatch(CreatePost(postData))
+                .then((response)=>{
+                    if(response.payload.success){
+                        props.history.push(`/CafeDetail/${CafeId}`)
+                    }else{
+                        alert('Error');
+                    }
+                })
         }
     }
 
@@ -79,4 +92,4 @@ const PostWrite = (props)=>{
     )
 }
 
-export default PostWrite;
+export default withRouter(PostWrite);

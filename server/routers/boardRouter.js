@@ -10,4 +10,6 @@ router.post('/deleteBoard', board.deleteBoard);
 
 router.post('/updateBoard', board.updateBoard);
 
+router.post('/getNowBoard',board.getNowBoard);
+
 module.exports = router;

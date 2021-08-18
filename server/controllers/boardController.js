@@ -37,7 +37,7 @@ const deleteBoard = (req,res) => {
 
 const updateBoard = (req,res)=>{
 
-    console.log(req.body)
+    // console.log(req.body)
     
     Board.findOneAndUpdate({_id : req.body.boardId }, { $set: { name: req.body.boardName , explain : req.body.boardExplain} })
         .exec((err,board)=>{
@@ -47,9 +47,24 @@ const updateBoard = (req,res)=>{
         })
 }
 
+const getNowBoard = (req,res)=> {
+
+    // console.log(req.body)
+
+    Board.findOne({_id : req.body._id})
+    .populate('Posts')
+    .exec((err,board)=>{
+        if(err) return res.status(400).json({success : false, err})
+        return res.status(200).json({success : true, nowBoard : board})
+    })
+
+
+}
+
 module.exports = {
     getBoardList,
     createBoard,
     deleteBoard,
-    updateBoard
+    updateBoard,
+    getNowBoard
 }
