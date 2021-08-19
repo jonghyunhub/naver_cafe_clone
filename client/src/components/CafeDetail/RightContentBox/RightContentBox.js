@@ -18,8 +18,8 @@ const RightContentBox = (props)=>{
                     <div className="title-box">
                         <h3>
                             {
-                                BoardData.nowBoard ?
-                                <a href>{ BoardData.nowBoard.board.name}</a>
+                                BoardData.nowBoard !== undefined && BoardData.nowBoard !== null ?
+                                <a href>{ BoardData.nowBoard.nowBoard.name }</a>
                                 : BoardData.boardlist ?
                                     <a href>{ BoardData.boardlist.boardlist[0].name}</a>
                                     : null
@@ -29,7 +29,7 @@ const RightContentBox = (props)=>{
                     <tbody>
                     {
                         BoardData.nowBoard && 
-                            BoardData.nowBoard.board.Posts.map((post,index)=>{
+                            BoardData.nowBoard.nowBoard.Posts.map((post,index)=>{
                                 return(
                                     <CafePost post = {post} key={index}/>
                                 )

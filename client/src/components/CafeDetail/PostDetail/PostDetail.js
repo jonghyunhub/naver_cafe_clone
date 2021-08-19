@@ -1,12 +1,15 @@
 import React from 'react';
 import './PostDetail.css';
 import {CommentItem} from 'components';
-import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+import {useDispatch} from 'react-redux';
 
 const PostDetail = (props)=>{
 
-   const post = useSelector(state => state.nowBoard)
-    
+    const {PostId} = useParams();
+    console.log('PostId',PostId)
+
+    const dispatch = useDispatch();
 
     return(
         <div className="post_detail">

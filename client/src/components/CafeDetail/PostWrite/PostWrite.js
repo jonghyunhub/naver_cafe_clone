@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import './PostWrite.css';
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -10,7 +10,7 @@ import { withRouter } from 'react-router';
 
 const PostWrite = (props)=>{
     
-
+    
     const dispatch = useDispatch();
     let {CafeId} = useParams();
     const board = useSelector(state => state.board)
@@ -20,6 +20,13 @@ const PostWrite = (props)=>{
     const [boardId, setboardId] = useState('')
     const [postTitle, setpostTitle] = useState('')
     const [postContents, setpostContents] = useState({})
+
+    useEffect(() => {
+        console.log('board',board)
+        if(board !== null && board.boardlist !== undefined)
+        setboardId(board.boardlist.boardlist[1]._id);
+    }, [board])
+
 
     
     const onBoardHandler = (e)=>{
@@ -36,7 +43,8 @@ const PostWrite = (props)=>{
             Board :boardId, 
             title : postTitle, 
             content : postContents,
-            userId : user.userData._id._id
+            userId : user.userData._id._id,
+            totalBoard : board.boardlist.boardlist[0]._id
         }
         console.log(postData)
         if(boardId ==='' || postTitle === '' || postContents === null){
@@ -70,9 +78,13 @@ const PostWrite = (props)=>{
                         board.boardlist !== undefined && board.boardlist.boardlist !== undefined ?
                         board.boardlist.boardlist.map((board,index)=>{
                             //  console.log(board._id)
-                            return <option key={index}  value={board._id}>
-                                    {board.name}
-                                </option>
+                            if(index === 0){
+                                // index === 0  은 전체게시판을 의미함
+                            }else {
+                                return <option key={index}  value={board._id}>
+                                        {board.name}
+                                    </option>
+                            }
                         })
                         : null
                     }

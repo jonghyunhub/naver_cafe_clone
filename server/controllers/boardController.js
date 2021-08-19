@@ -55,6 +55,7 @@ const getNowBoard = (req,res)=> {
     .populate('Posts')
     .exec((err,board)=>{
         if(err) return res.status(400).json({success : false, err})
+        // console.log('nowboard',board)
         return res.status(200).json({success : true, nowBoard : board})
     })
 
