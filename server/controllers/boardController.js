@@ -52,7 +52,10 @@ const getNowBoard = (req,res)=> {
     // console.log(req.body)
 
     Board.findOne({_id : req.body._id})
-    .populate('Posts')
+    .populate({ 
+        path : 'Posts',
+        populate : { path : 'Writer', select : 'name' }
+    })
     .exec((err,board)=>{
         if(err) return res.status(400).json({success : false, err})
         // console.log('nowboard',board)

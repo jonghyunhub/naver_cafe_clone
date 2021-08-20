@@ -17,9 +17,9 @@ const CafePost = (props)=>{
                 <a href={posturl}>{props.post.title}</a>
             </td>
             <td className="td_name">
-                <a href="#">{props.post.writer}</a>
+                <a href="#">{props.post.Writer.name}</a>
             </td>
-            <td className="td_date">{props.post.date}</td>
+            <td className="td_date">{props.post.updatedAt}</td>
             <td className="td_view">{props.post.view}</td>
         </tr>
     )

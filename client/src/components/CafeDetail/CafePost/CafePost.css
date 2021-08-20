@@ -23,7 +23,7 @@
 
 .td_article{
     display: inline-block;
-    width: 520px;
+    width: 400px;
     text-align: left;
 }
 
@@ -35,7 +35,7 @@
 
 .td_date{
     display: inline-block;
-    width: 100px;
+    width: 220px;
     text-align: center;
 }
 
