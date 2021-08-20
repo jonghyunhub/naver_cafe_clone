@@ -10,3 +10,4 @@ export const Cafe_Delete = 'cafe_delete';
 export const Board_Delete = 'Board_delete';
 export const Update_Board = 'update_board';
 export const Create_Post = 'create_post';
+export const nowPost = 'now_post';

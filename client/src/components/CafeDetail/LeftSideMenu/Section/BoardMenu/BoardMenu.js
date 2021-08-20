@@ -11,11 +11,16 @@ function BoardMenu(props) {
 
     const dispatch = useDispatch();
 
-    const [Board, setBoard] = useState([]);
-
     // console.log('cafe',cafe)
     // console.log('boardlist',board)
     
+
+    useEffect(() => {
+        
+        
+       
+
+    }, [])
 
     
     useEffect(() => {

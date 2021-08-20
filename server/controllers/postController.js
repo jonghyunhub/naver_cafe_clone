@@ -3,7 +3,7 @@ const {Board} = require('../models/Board')
 
 const createPost = (req,res)=>{
 
-    console.log(req.body)
+    // console.log(req.body)
 
     const post = new Post(req.body)
     post.save((err)=>{
@@ -33,6 +33,18 @@ const createPost = (req,res)=>{
 }
 
 
+const nowPost = (req,res)=>{
+
+    // console.log(req.body);
+    Post.findOne({_id  : req.body.PostId})
+    .populate('Writer')
+    .exec((err,post)=>{
+        if(err) return res.status(400).json({success : false, err})
+        return res.status(200).json({success : true, post})
+    })
+}
+
 module.exports = {
-    createPost
+    createPost, 
+    nowPost
 }

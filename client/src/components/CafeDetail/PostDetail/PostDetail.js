@@ -1,15 +1,34 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './PostDetail.css';
 import {CommentItem} from 'components';
 import { useParams } from 'react-router';
 import {useDispatch} from 'react-redux';
+import {NowPost} from '_actions/post_action';
+import { useSelector } from 'react-redux';
 
 const PostDetail = (props)=>{
 
     const {PostId} = useParams();
     console.log('PostId',PostId)
 
+    const post = useSelector(state => state.post)
+
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        
+        const dataToSubmit = {PostId : PostId}
+
+        dispatch(NowPost(dataToSubmit))
+            .then(response=>{
+                if(response.payload.success){
+
+                }else{
+                    alert('Error');
+                }
+            })
+        
+    }, [])
 
     return(
         <div className="post_detail">
@@ -18,7 +37,13 @@ const PostDetail = (props)=>{
                     <a href="#" className="link_board">{}</a>
                 </div>
                 <div className="title_area">
-                    {/* <h3>{props.postList[PostId].title}</h3> */}
+                    <h3>
+                        {
+                            post.nowPost !== undefined ?
+                            post.nowPost.post.title
+                            : null
+                        }
+                    </h3>
                 </div>
                 <div className="writer-info">
                     <a href="#" className="profile">
@@ -27,11 +52,19 @@ const PostDetail = (props)=>{
                     <div className="profile-area">
                         <div className="profile-info">
                             <a href="#">
-                                {/* {props.postList[PostId].writer} */}
+                                {
+                                post.nowPost !== undefined  ?
+                                post.nowPost.post.Writer.name
+                                : null
+                                }
                             </a>
                         </div>
                         <div className="article-info">
-                            {/* <span className="date"> {props.postList[PostId].date} </span> */}
+                        {
+                            post.nowPost !== undefined ?
+                            <span className="date"> {post.nowPost.post.updatedAt} </span>
+                            : null
+                        }
                             {/* <span className="count"> 조회 {props.postList[PostId].view} </span> */}
                         </div>
                     </div>
@@ -39,13 +72,21 @@ const PostDetail = (props)=>{
             </div>
             <div className="article_container">
                 <div className="content_container">
-                    {/* {props.postList[PostId].content} */}
+                {
+                                post.nowPost !== undefined  ?
+                                <div dangerouslySetInnerHTML={ {__html : post.nowPost.post.content} }></div>
+                                : null
+                }
                 </div>
                 <a href="#" className="writer_profile_link">
                     <div className="article_writer profile">
                     <img src="https://ssl.pstatic.net/static/cafe/cafe_pc/default/cafe_profile_77.png?type=c77_77" width="36" height="36" />
                         <span className="box">
-                            {/* <strong className="user">{props.postList[PostId].writer}</strong> */}
+                        {
+                                post.nowPost !== undefined  ?
+                                <strong className="user">{post.nowPost.post.Writer.name}</strong>
+                                : null
+                        }
                             님의 게시글 더보기
                         </span>
                     </div>

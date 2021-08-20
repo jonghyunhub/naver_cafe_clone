@@ -43,10 +43,10 @@ const PostWrite = (props)=>{
             Board :boardId, 
             title : postTitle, 
             content : postContents,
-            userId : user.userData._id._id,
+            Writer : user.userData._id._id,
             totalBoard : board.boardlist.boardlist[0]._id
         }
-        console.log(postData)
+        // console.log(postData)
         if(boardId ==='' || postTitle === '' || postContents === null){
             alert('글제목, 글내용, 게시판 설정을 다시한번 확인하세요')
         } else {

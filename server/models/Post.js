@@ -17,7 +17,7 @@ const boardSchema = mongoose.Schema({
             type : Schema.Types.ObjectId,
             ref : "board",
         },
-    Wirter : {
+    Writer : {
         type : Schema.Types.ObjectId,
             ref : "User",
     }
