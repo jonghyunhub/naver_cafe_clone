@@ -1,15 +1,17 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import './PostDetail.css';
 import {CommentItem} from 'components';
 import { useParams } from 'react-router';
 import {useDispatch} from 'react-redux';
 import {NowPost} from '_actions/post_action';
 import { useSelector } from 'react-redux';
+import { withRouter } from 'react-router';
 
 const PostDetail = (props)=>{
 
+    const [isWriter, setisWriter] = useState(false);
     const {PostId} = useParams();
-    console.log('PostId',PostId)
+    // console.log('PostId',PostId)
 
     const post = useSelector(state => state.post)
 
@@ -22,7 +24,8 @@ const PostDetail = (props)=>{
         dispatch(NowPost(dataToSubmit))
             .then(response=>{
                 if(response.payload.success){
-
+                    if(response.payload.post.Writer._id === localStorage.getItem('userId') )
+                        setisWriter(true)
                 }else{
                     alert('Error');
                 }
@@ -30,11 +33,26 @@ const PostDetail = (props)=>{
         
     }, [])
 
+
+    // const postUpdateHandler = () => {
+        
+    //     props.history.push('/CafeDetail/practice/PostDetail/PostUpdate')
+
+    // }
+
+
     return(
         <div className="post_detail">
             <div className="article_header">
+                <div>
                 <div className="article_title">
-                    <a href="#" className="link_board">{}</a>
+                    <a href className="link_board">
+                        {
+                            post.nowPost !== undefined  ?
+                            post.nowPost.post.Board.name
+                            : null
+                        }
+                    </a>
                 </div>
                 <div className="title_area">
                     <h3>
@@ -69,6 +87,15 @@ const PostDetail = (props)=>{
                         </div>
                     </div>
                 </div>
+                </div>
+                {
+                    isWriter === true ?
+                    <div className="post_setting_area">
+                        <a href={`/CafeDetail/practice/PostUpdate/${PostId}`} role="button" className="baseBtn" onClick>수정</a>
+                        <a href="#" role="button" className="baseBtn" onClick>삭제</a>
+                    </div>
+                    : null
+                }
             </div>
             <div className="article_container">
                 <div className="content_container">
@@ -110,7 +137,6 @@ const PostDetail = (props)=>{
                 <ul className="comment_list">
                     <CommentItem/>
                     <CommentItem/>
-                    <CommentItem/>
                 </ul>
                 <div className="comment_write_box">
                     <div className="comment_inbox">
@@ -130,4 +156,4 @@ const PostDetail = (props)=>{
     )
 }
 
-export default PostDetail;
+export default withRouter(PostDetail);

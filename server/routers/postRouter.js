@@ -7,4 +7,6 @@ router.post('/createPost',post.createPost)
 
 router.post('/nowPost',post.nowPost)
 
+router.post('/updatePost',post.updatePost)
+
 module.exports = router;

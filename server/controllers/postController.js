@@ -38,13 +38,32 @@ const nowPost = (req,res)=>{
     // console.log(req.body);
     Post.findOne({_id  : req.body.PostId})
     .populate('Writer')
+    .populate('Board')
     .exec((err,post)=>{
         if(err) return res.status(400).json({success : false, err})
         return res.status(200).json({success : true, post})
     })
 }
 
+const updatePost = (req,res) => {
+
+    // console.log(req.body);
+    Post.findOne({_id : req.body.postId})
+        .exec((err,post)=>{
+            if(err) return res.status(400).json({success : false, err})
+            // console.log('post', post)
+            post.Board = req.body.Board
+            post.title = req.body.title
+            post.content = req.body.content
+            post.save((err)=>{
+                 if(err) return res.status(400).json({success : false, err})
+                 return res.status(200).json({success : true})
+            })
+        })
+}
+
 module.exports = {
     createPost, 
-    nowPost
+    nowPost,
+    updatePost
 }

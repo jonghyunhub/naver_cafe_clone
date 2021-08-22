@@ -1,5 +1,5 @@
 import {
-    Create_Post, nowPost
+    Create_Post, nowPost, updatePost
 } from '../_actions/types';
 
 export default function(state = {}, action){
@@ -8,8 +8,10 @@ export default function(state = {}, action){
             // console.log('action.payload',action.payload)
             return {...state, createPost : action.payload}
         case nowPost:
-            console.log('action.payload',action.payload)
+            // console.log('action.payload',action.payload)
             return {...state, nowPost : action.payload}
+        case updatePost:
+            return {...state, updatePost : action.payload}
         default:
             return state;
     }

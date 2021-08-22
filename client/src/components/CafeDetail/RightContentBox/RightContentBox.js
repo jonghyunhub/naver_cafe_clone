@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Route } from 'react-router';
 import './RightContentBox.css';
-import {CafePost , PostDetail , CafeGateBox , Join, PostWrite, CafeAdmin} from 'components';
+import {CafePost , PostDetail , CafeGateBox , Join, PostWrite, CafeAdmin,PostUpdate} from 'components';
 import { useSelector } from 'react-redux';
 
 const RightContentBox = (props)=>{
@@ -57,6 +57,9 @@ const RightContentBox = (props)=>{
                     </Route>
                     <Route exact path="/CafeDetail/:CafeId/CafeAdmin">
                         <CafeAdmin/>
+                    </Route>
+                    <Route exact path="/CafeDetail/:CafeId/PostUpdate/:PostId">
+                        <PostUpdate/>
                     </Route>
                 </div>
             </switch>

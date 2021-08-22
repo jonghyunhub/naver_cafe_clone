@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    Create_Post, nowPost
+    Create_Post, nowPost, updatePost
 } from './types'
 
 export function CreatePost(dataTosubmit){
@@ -21,6 +21,18 @@ export function NowPost(dataToSubmit){
 
     return {
         type : nowPost,
+        payload : request
+    }
+
+}
+
+export function UpdatePost(dataToSubmit){
+
+    const request = axios.post('/api/post/updatePost', dataToSubmit)
+        .then(response=> response.data)
+        
+    return {
+        type : updatePost,
         payload : request
     }
 

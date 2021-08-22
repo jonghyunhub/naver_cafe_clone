@@ -1,0 +1,129 @@
+import React,{useState, useEffect} from 'react';
+import './PostUpdate.css';
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
+import { withRouter } from 'react-router';
+import {NowPost , UpdatePost} from '_actions/post_action'
+
+const PostUpdate = (props)=>{
+    
+    
+    const dispatch = useDispatch();
+    
+    const {CafeId} = useParams();
+    const {PostId} = useParams();
+
+    const board = useSelector(state => state.board)
+    const user = useSelector(state => state.user)
+    const post = useSelector(state => state.post)
+    console.log(post)
+
+    const [boardId, setboardId] = useState('')
+    const [postTitle, setpostTitle] = useState('')
+    const [postContents, setpostContents] = useState({})
+
+    useEffect(() => {
+        // console.log('board',board)
+        if(board !== null && board.boardlist !== undefined)
+        setboardId(board.boardlist.boardlist[1]._id);
+    }, [board])
+
+    useEffect(() => {
+        
+        const dataToSubmit = {PostId : PostId}
+
+        dispatch(NowPost(dataToSubmit))
+            .then(response=>{
+                if(response.payload.success){
+                }else{
+                    alert('Error');
+                }
+            })
+            
+        }, [])
+        
+    useEffect(() => {
+            setpostTitle(post?.nowPost?.post.title)
+    }, [post])
+
+    
+    const onBoardHandler = (e)=>{
+        setboardId(e.currentTarget.value);
+    }
+
+    const onPostTitleHandler= (e)=>{
+        setpostTitle(e.currentTarget.value);
+    }
+
+    const onPostSubmitHandler = (e)=>{
+        e.preventDefault()
+        const postData = {
+            postId : PostId,
+            title : postTitle, 
+            content : postContents,
+            Writer : user.userData._id._id,
+            afterBoard : boardId,
+            // previousBoard : ,
+        }
+        // console.log(postData)
+        if(boardId ==='' || postTitle === '' || postContents === null){
+            alert('글제목, 글내용, 게시판 설정을 다시한번 확인하세요')
+        } else {
+            dispatch(UpdatePost(postData))
+                .then((response)=>{
+                    if(response.payload.success){
+                        props.history.push(`/CafeDetail/${CafeId}`)
+                    }else{
+                        alert('Error');
+                    }
+                })
+        }
+    }
+
+
+    return(
+        <div className="postwrite">
+            <div className="WritingHeader">
+                <h2 className="title">글 수정하기</h2>
+                <div className="tool_area">
+                    <a href="" className="submit_btn" onClick={onPostSubmitHandler}>
+                        <span>등록</span>
+                    </a>
+                </div>
+            </div>
+            <form>
+                <select onChange={onBoardHandler}>
+                    {
+                        board.boardlist !== undefined && board.boardlist.boardlist !== undefined ?
+                        board.boardlist.boardlist.map((board,index)=>{
+                            //  console.log(board._id)
+                            if(index === 0){
+                                // index === 0  은 전체게시판을 의미함
+                            }else {
+                                return <option key={index}  value={board._id}>
+                                        {board.name}
+                                    </option>
+                            }
+                        })
+                        : null
+                    }
+                </select>
+            <div className="TitleArea" ><textarea placeholder="제목을 입력해 주세요" value={postTitle} onChange={onPostTitleHandler}></textarea></div>
+            <CKEditor
+                editor={ClassicEditor}
+                data={ post?.nowPost?.post.content }
+                onChange={(event, editor) => {
+                const data = editor.getData();
+                // console.log(data);
+                setpostContents(data);
+                }}
+            />
+            </form>
+        </div>
+    )
+}
+
+export default withRouter(PostUpdate);
