@@ -9,4 +9,6 @@ router.post('/nowPost',post.nowPost)
 
 router.post('/updatePost',post.updatePost)
 
+router.post('/deletePost',post.deletePost)
+
 module.exports = router;

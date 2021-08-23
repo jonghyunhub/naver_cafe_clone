@@ -6,11 +6,13 @@ import {useDispatch} from 'react-redux';
 import {NowPost} from '_actions/post_action';
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
+import axios from 'axios';
 
 const PostDetail = (props)=>{
 
     const [isWriter, setisWriter] = useState(false);
     const {PostId} = useParams();
+    const {CafeId} = useParams();
     // console.log('PostId',PostId)
 
     const post = useSelector(state => state.post)
@@ -34,11 +36,17 @@ const PostDetail = (props)=>{
     }, [])
 
 
-    // const postUpdateHandler = () => {
-        
-    //     props.history.push('/CafeDetail/practice/PostDetail/PostUpdate')
+    const postDeleteHandler = () => {
+        axios.post('/api/post/deletePost',{PostId : PostId})
+            .then(response=>{
+                console.log(response.data)
+                if(response.data.success){
+                    props.history.push(`/CafeDetail/${CafeId}`)
+                }
+                else alert('Error')
+            })
 
-    // }
+    }
 
 
     return(
@@ -48,9 +56,7 @@ const PostDetail = (props)=>{
                 <div className="article_title">
                     <a href className="link_board">
                         {
-                            post.nowPost !== undefined  ?
-                            post.nowPost.post.Board.name
-                            : null
+                            post?.nowPost?.post?.Board?.name
                         }
                     </a>
                 </div>
@@ -92,7 +98,7 @@ const PostDetail = (props)=>{
                     isWriter === true ?
                     <div className="post_setting_area">
                         <a href={`/CafeDetail/practice/PostUpdate/${PostId}`} role="button" className="baseBtn" onClick>수정</a>
-                        <a href="#" role="button" className="baseBtn" onClick>삭제</a>
+                        <a role="button" className="baseBtn" onClick={postDeleteHandler} style={{cursor : 'pointer'}}>삭제</a>
                     </div>
                     : null
                 }

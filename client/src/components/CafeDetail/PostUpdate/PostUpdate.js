@@ -19,7 +19,7 @@ const PostUpdate = (props)=>{
     const board = useSelector(state => state.board)
     const user = useSelector(state => state.user)
     const post = useSelector(state => state.post)
-    console.log(post)
+    console.log(post?.nowPost?.post.Board._id)
 
     const [boardId, setboardId] = useState('')
     const [postTitle, setpostTitle] = useState('')
@@ -66,7 +66,7 @@ const PostUpdate = (props)=>{
             content : postContents,
             Writer : user.userData._id._id,
             afterBoard : boardId,
-            // previousBoard : ,
+            previousBoard : post.nowPost.post.Board._id,
         }
         // console.log(postData)
         if(boardId ==='' || postTitle === '' || postContents === null){
