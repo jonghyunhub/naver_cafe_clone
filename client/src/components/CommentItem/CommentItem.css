@@ -4,6 +4,10 @@
     border-bottom: 1px solid #ebebeb;
 }
 
+.mycomment{
+    background: #f9f9fa;
+}
+
 .comment_area{
     text-align: left;
     position: relative;
@@ -37,8 +41,23 @@
     margin-bottom: 10px;
 }
 
+.comment-bottom{
+    position: relative;
+    display: flex;
+}
+
 .comment-info-box{
     position: relative;
-    left: 35px;
+    color : #979797;
+    display: inline-block;
+}
+
+.more_comment{
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.more_comment a{
     color : #979797;
 }

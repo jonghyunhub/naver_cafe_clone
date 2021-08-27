@@ -172,8 +172,6 @@ dl, ol, ul {
 }
 
 .comment_inbox_text{
-    overflow: hidden;
-    overflow-wrap: break-word;
     height: 17px;
     max-height: 500px;
     display: block;
@@ -182,7 +180,7 @@ dl, ol, ul {
     padding-right: 1px;
     border: 0;
     font-size: 13px;
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     resize: none;
     box-sizing: border-box;
     background: transparent;

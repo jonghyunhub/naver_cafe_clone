@@ -61,7 +61,6 @@ const PostWrite = (props)=>{
         }
     }
 
-
     return(
         <div className="postwrite">
             <div className="WritingHeader">

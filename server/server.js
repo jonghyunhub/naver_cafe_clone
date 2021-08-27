@@ -4,6 +4,7 @@ const post = require('./routers/postRouter');
 const user = require('./routers/userRouter');
 const cafe = require('./routers/cafeRouter');
 const board = require('./routers/boardRouter')
+const comment = require('./routers/commentRouter');
 const config = require('./config/key');
 const cookieParser = require('cookie-parser');
 
@@ -14,6 +15,8 @@ app.use('/api/post',post);
 app.use('/api/user',user);
 app.use('/api/cafe',cafe);
 app.use('/api/board',board);
+app.use('/api/comment',comment)
+
 
 
 

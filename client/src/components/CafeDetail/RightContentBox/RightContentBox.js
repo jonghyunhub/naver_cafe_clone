@@ -19,7 +19,7 @@ const RightContentBox = (props)=>{
                         <h3>
                             {
                                 BoardData.nowBoard !== undefined && BoardData.nowBoard !== null ?
-                                <a href>{ BoardData.nowBoard.nowBoard.name }</a>
+                                <a href>{ BoardData?.nowBoard?.nowBoard.name }</a>
                                 : BoardData.boardlist ?
                                     <a href>{ BoardData.boardlist.boardlist[0].name}</a>
                                     : null

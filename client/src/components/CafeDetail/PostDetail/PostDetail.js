@@ -1,12 +1,12 @@
 import React,{useEffect,useState} from 'react';
 import './PostDetail.css';
-import {CommentItem} from 'components';
 import { useParams } from 'react-router';
 import {useDispatch} from 'react-redux';
 import {NowPost} from '_actions/post_action';
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
 import axios from 'axios';
+import {Comment} from 'components'
 
 const PostDetail = (props)=>{
 
@@ -136,28 +136,7 @@ const PostDetail = (props)=>{
                     </div>
                 </div>
             </div>
-            <div className="comment_box">
-                <div className="comment_option">
-                    <h3>댓글</h3>
-                </div>
-                <ul className="comment_list">
-                    <CommentItem/>
-                    <CommentItem/>
-                </ul>
-                <div className="comment_write_box">
-                    <div className="comment_inbox">
-                        <div className="comment_inbox_name">
-                            {/* {props.postList[PostId].nickName} */}
-                        </div>
-                        <textarea placeholder="댓글을 남겨보세요" rows="1" className="comment_inbox_text"></textarea>
-                    </div>
-                    <div className="comment_attach">
-                        <div className="register_box">
-                            <a href="#" className="btn_register">등록</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Comment/>
         </div>
     )
 }

@@ -21,3 +21,5 @@ export {default as CreateCafeForm} from './CreateCafeForm/CreateCafeForm';
 export {default as BoardMenu} from './CafeDetail/LeftSideMenu/Section/BoardMenu/BoardMenu';
 export {default as CafeAdmin} from './CafeAdmin/CafeAdmin';
 export {default as PostUpdate} from './CafeDetail/PostUpdate/PostUpdate';
+export {default as Comment} from './CafeDetail/Comment/Comment';
+export {default as ReplyComment} from './CafeDetail/Comment/ReplyComment';
