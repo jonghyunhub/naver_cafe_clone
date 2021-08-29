@@ -61,3 +61,31 @@
 .more_comment a{
     color : #979797;
 }
+
+.comment-settings{
+    position: relative;
+    top: -40px;
+    float: right;
+}
+
+.comment-settings .submit_btn{
+    min-width: 46px;
+    height: 36px;
+    margin-left: 10px;
+    padding: 0 12px;
+    font-size: 13px;
+    display: inline-block;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: top;
+    color : #009f47;
+    background: rgba(3, 199, 90, 0.12);
+}
+
+.comment-settings .submit_btn span{
+    font-size: 13px;
+    line-height: 36px;
+    color : #009F47
+}

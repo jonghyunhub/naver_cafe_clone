@@ -86,7 +86,7 @@ const PostDetail = (props)=>{
                         <div className="article-info">
                         {
                             post.nowPost !== undefined ?
-                            <span className="date"> {post.nowPost.post.updatedAt} </span>
+                            <span className="date"> {post.nowPost.post.updatedAt.substring(0, 10)} </span>
                             : null
                         }
                             {/* <span className="count"> 조회 {props.postList[PostId].view} </span> */}

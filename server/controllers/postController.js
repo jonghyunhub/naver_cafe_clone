@@ -1,5 +1,6 @@
 const {Post} = require('../models/Post')
 const {Board} = require('../models/Board')
+const {Comment} = require('../models/Comment')
 
 const createPost = (req,res)=>{
 
@@ -90,8 +91,13 @@ const deletePost = (req,res)=>{
     Post.findOneAndDelete({_id : req.body.PostId})
         .exec((err,post)=>{
             if(err) return res.status(400).json({success : false, err})
-            console.log(post.Board._id)
-            return res.status(200).json({success : true})
+            console.log(post._id)
+            //게시글 댓글도 모두 찾아서 지워줌
+            Comment.deleteMany({ postId: post._id })
+            .exec((err)=>{
+                if (err) return res.status(400).json({ success: false, err });
+                return res.status(200).json({success : true})
+            })
             // Board.findOne({_id : post.Board._id})
             //     .exec((err,board)=>{
             //         if(err) return res.status(400).json({success : false, err})

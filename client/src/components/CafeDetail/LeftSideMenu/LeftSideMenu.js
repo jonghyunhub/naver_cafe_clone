@@ -80,7 +80,7 @@ const CafeInfoDetail = (props)=>{
                             <a href="#" className="cafe-nickname">{cafeManager}</a>
                         </div>
                         <div className="second-info-ui">
-                            <a href="#" className="cafe-history">Since {cafeTime}</a>
+                            <a href="#" className="cafe-history">Since {cafeTime.substring(0, 10)}</a>
                         </div>
                         {
                             isManager === true ?

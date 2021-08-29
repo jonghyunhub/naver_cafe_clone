@@ -6,4 +6,8 @@ router.post("/getComments", comment.getComments);
 
 router.post("/saveComment", comment.saveComment);
 
+router.post("/deleteComment", comment.deleteComment);
+
+router.post("/updateComment", comment.updateComment);
+
 module.exports = router;

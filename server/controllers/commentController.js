@@ -24,7 +24,38 @@ const saveComment = (req,res)=>{
         })
 }
 
+const deleteComment = (req,res)=>{
+    // console.log(req.body)
+    Comment.findOneAndDelete({ _id: req.body.commentId }).exec(
+      (err,comment) => {
+        if (err) return res.json({ success: false, err });
+        //댓글의 대댓글도 모두 지워줌
+        Comment.deleteMany({ responseTo : comment._id})
+            .exec((err)=>{
+                if (err) return res.json({ success: false, err });
+                res.status(200).json({ success: true });
+            })
+      }
+    );
+}
+
+//댓글 수정하는 함수
+const updateComment = (req,res)=>{
+    // console.log(req.body)
+    Comment.findOne({_id : req.body._id})
+        .exec((err,comment)=>{
+            if (err) return res.json({ success: false, err });
+            comment.content = req.body.content
+            comment.save((err)=>{
+                if (err) return res.json({ success: false, err });
+                res.status(200).json({ success: true });
+            })
+        })
+}
+
 module.exports = {
   getComments,
   saveComment,
+  deleteComment,
+  updateComment,
 };
