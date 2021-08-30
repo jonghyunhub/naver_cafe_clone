@@ -1,7 +1,12 @@
 import axios from 'axios';
 import {
-    Get_Board_list, nowBoard, CreateBoard, Board_Delete , Update_Board
-} from './types'
+  Get_Board_list,
+  nowBoard,
+  CreateBoard,
+  Board_Delete,
+  Update_Board,
+  Get_Total_Post,
+} from "./types";
 
 export function getBoardList(dataTosubmit){
 
@@ -12,6 +17,17 @@ export function getBoardList(dataTosubmit){
         type : Get_Board_list,
         payload : request
     }
+}
+
+export function totalPost(board){
+
+    console.log('board',board)
+
+    return {
+      type: Get_Total_Post,
+      payload : board
+    };
+
 }
 
 export function nowboard(board){

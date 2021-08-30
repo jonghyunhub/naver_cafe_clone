@@ -1,6 +1,11 @@
 import {
-    Get_Board_list,nowBoard, CreateBoard, Board_Delete , Update_Board
-} from '../_actions/types';
+  Get_Board_list,
+  nowBoard,
+  CreateBoard,
+  Board_Delete,
+  Update_Board,
+  Get_Total_Post,
+} from "../_actions/types";
 
 export default function(state = {}, action){
     switch (action.type) {
@@ -16,6 +21,8 @@ export default function(state = {}, action){
             return {...state, DeleteBoard : action.payload}
         case Update_Board:
             return {...state, UpdateBoard : action.payload}
+        case Get_Total_Post:
+            return {...state, nowBoard : {board : action.payload}}
         default:
             return state;
     }

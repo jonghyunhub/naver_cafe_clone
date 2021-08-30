@@ -4,6 +4,7 @@ export const AUTH_USER = 'auth_user';
 export const LOGOUT_USER = 'logout_user';
 export const Get_Board_list = 'get_board_list';
 export const nowBoard = 'now_board';
+export const Get_Total_Post = "get_total_post";
 export const CreateBoard = 'create_board';
 export const Get_Cafe_info = 'get_cafe_info';
 export const Cafe_Delete = 'cafe_delete';

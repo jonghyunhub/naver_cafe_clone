@@ -3,11 +3,15 @@ const { Board } = require('../models/Board');
 const getBoardList = (req,res)=>{
 
     // console.log(req.body)
-    Board.find({Cafe : req.body.cafeId})
-        .exec((err,boards)=>{
-            if(err) return res.status(400).json({success : false, err})
-            return res.status(200).json({success: true, boardlist : boards})
-        })
+    Board.find({ Cafe: req.body.cafeId })
+      .populate({
+        path: "Posts",
+        populate: { path: "Writer", select: "name" },
+      })
+      .exec((err, boards) => {
+        if (err) return res.status(400).json({ success: false, err });
+        return res.status(200).json({ success: true, boardlist: boards });
+      });
 
 }
 
@@ -24,7 +28,7 @@ const createBoard = (req,res)=>{
 
 const deleteBoard = (req,res) => {
 
-    console.log(req.body)
+    // console.log(req.body)
     
     Board.findOneAndDelete({_id : req.body.boardId })
         .exec((err,board)=>{
@@ -59,16 +63,17 @@ const getNowBoard = (req,res)=> {
     .exec((err,board)=>{
         if(err) return res.status(400).json({success : false, err})
         // console.log('nowboard',board)
-        return res.status(200).json({success : true, nowBoard : board})
+        return res.status(200).json({success : true, board})
     })
 
 
 }
 
+
 module.exports = {
-    getBoardList,
-    createBoard,
-    deleteBoard,
-    updateBoard,
-    getNowBoard
-}
+  getBoardList,
+  createBoard,
+  deleteBoard,
+  updateBoard,
+  getNowBoard,
+};
